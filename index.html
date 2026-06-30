@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your FitNess Gym</title>
+<title>Lunatic Fitness</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -211,7 +211,7 @@ footer span{color:var(--orange)}
   <div class="hero-overlay"></div>
   <div class="hero-bottom"></div>
   <div class="hero-content">
-    <h1>YOUR<br>FITNESS</h1>
+    <h1>LUNATIC<br>FITNESS</h1>
     <p class="hero-sub">TRAIN. GRIND. EVOLVE.</p>
     <div class="scroll-badge">SCROLL↓</div>
   </div>
@@ -231,7 +231,7 @@ footer span{color:var(--orange)}
 <section class="combo-section" id="combo">
   <p class="section-label">DAILY BUILDER</p>
   <h2 class="section-title">Build Your Day</h2>
-  <p class="section-sub">DRAG 2–3 MUSCLE GROUPS → GET BEST 3 EXERCISES FROM EACH</p>
+  <p class="section-sub">DRAG 2–3 MUSCLE GROUPS → GET A HAND-CURATED 6-EXERCISE WORKOUT</p>
   <div class="combo-wrapper">
     <div>
       <p style="font-family:'Space Mono';font-size:10px;color:#333;margin-bottom:14px">DRAG FROM HERE</p>
@@ -298,7 +298,7 @@ footer span{color:var(--orange)}
 </section>
 
 <footer>
-  <div>© 2025 <span>YOUR FITNESS GYM</span></div>
+  <div>© 2025 <span>LUNATIC FITNESS</span></div>
   <div>BUILT TO PERFORM</div>
 </footer>
 
@@ -373,70 +373,78 @@ document.getElementById('charBack').src='data:image/jpeg;base64,/9j/2wDFAAQFBQkG
 // Base URL: https://ymove.app/api/free/{uuid}
 const videoBase='https://ymove.app/api/free/';
 const exVideos={
+  // CHEST — varied across all 4 chest-relevant clips, no repeats back-to-back
   'Bench Press':       'd09e0ed7-21dd-4f1c-b5cf-3e345e9304ec',
   'Incline DB Press':  'ece55528-9855-49cf-a970-cf47c662e45d',
   'Chest Fly':         '82760b28-30e2-4311-a4c5-42da40082079',
-  'Push-ups':          'd09e0ed7-21dd-4f1c-b5cf-3e345e9304ec',
+  'Push-ups':          '0c178070-b799-4e6e-bfd0-332a0dc06ffe',
   'Cable Cross':       '82760b28-30e2-4311-a4c5-42da40082079',
   'Dips':              '9a550e2c-c55e-495d-b59e-b676c3d48a41',
   'Decline Press':     'd09e0ed7-21dd-4f1c-b5cf-3e345e9304ec',
-  'Pec Deck':          '82760b28-30e2-4311-a4c5-42da40082079',
+  'Pec Deck':          '0c178070-b799-4e6e-bfd0-332a0dc06ffe',
+  // SHOULDERS
   'Overhead Press':    'd725ad5a-e0dd-4fca-8b9e-0016aaa757a0',
   'Lateral Raises':    '1cce8f37-dd9f-442f-995e-be02b98a35ad',
-  'Front Raises':      '1cce8f37-dd9f-442f-995e-be02b98a35ad',
-  'Arnold Press':      'fb62140e-87c2-41f0-ada2-1d9be58664cf',
+  'Front Raises':      'fb62140e-87c2-41f0-ada2-1d9be58664cf',
+  'Arnold Press':      'd725ad5a-e0dd-4fca-8b9e-0016aaa757a0',
   'Face Pull':         '0f7cf0c4-34fe-4cb3-993e-469be8004c2c',
-  'Reverse Fly':       '0f7cf0c4-34fe-4cb3-993e-469be8004c2c',
+  'Reverse Fly':       'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
   'Upright Row':       'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
-  'Shrugs':            'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
+  'Shrugs':            'd725ad5a-e0dd-4fca-8b9e-0016aaa757a0',
+  // BACK
   'Deadlift':          'f96d5f24-c9b0-4782-bbd9-41d383a6b633',
   'Pull-ups':          'c17e320f-7c96-4385-b8d7-f307ed4bae2e',
   'Barbell Row':       'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
   'Lat Pulldown':      'ed1ca95e-2642-4551-a477-17485e486bfc',
   'Seated Row':        '499ccaa4-719d-40bd-b441-511291482471',
   'T-bar Row':         'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
-  'Single Arm Row':    'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
+  'Single Arm Row':    '499ccaa4-719d-40bd-b441-511291482471',
   'Rack Pull':         'f96d5f24-c9b0-4782-bbd9-41d383a6b633',
+  // ARMS
   'Bicep Curl':        '998e8f21-2bda-49d8-a773-b59c316d022d',
   'Hammer Curl':       '2a0529a0-be74-4b88-bf1c-6b67c8f12ef8',
   'Tricep Pushdown':   '9a550e2c-c55e-495d-b59e-b676c3d48a41',
-  'Skull Crushers':    '9a550e2c-c55e-495d-b59e-b676c3d48a41',
+  'Skull Crushers':    'd09e0ed7-21dd-4f1c-b5cf-3e345e9304ec',
   'Overhead Ext.':     'fb62140e-87c2-41f0-ada2-1d9be58664cf',
   'Preacher Curl':     '998e8f21-2bda-49d8-a773-b59c316d022d',
-  'Close-Grip Press':  'd09e0ed7-21dd-4f1c-b5cf-3e345e9304ec',
-  'Reverse Curl':      '998e8f21-2bda-49d8-a773-b59c316d022d',
+  'Close-Grip Press':  '9a550e2c-c55e-495d-b59e-b676c3d48a41',
+  'Reverse Curl':      '2a0529a0-be74-4b88-bf1c-6b67c8f12ef8',
+  // CORE
   'Plank':             'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Crunches':          'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Leg Raises':        'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Russian Twists':    'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Cable Crunches':    'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
+  'Crunches':          '499ccaa4-719d-40bd-b441-511291482471',
+  'Leg Raises':        'c17e320f-7c96-4385-b8d7-f307ed4bae2e',
+  'Russian Twists':    'ae1f15b4-61f9-4da7-9ffe-0d8e72e6f097',
+  'Cable Crunches':    '0f7cf0c4-34fe-4cb3-993e-469be8004c2c',
   'Ab Wheel':          'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Dragon Flag':       'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
+  'Dragon Flag':       'd65feff4-9891-4ff8-a9f9-64965da7b69c',
   'Hanging Raise':     'c17e320f-7c96-4385-b8d7-f307ed4bae2e',
+  // GLUTES
   'Hip Thrust':        'e0e8ce33-e39e-4e14-950b-2540be912c5b',
-  'Glute Bridge':      'e0e8ce33-e39e-4e14-950b-2540be912c5b',
+  'Glute Bridge':      'b7f3df3f-7371-4d29-bc59-3227fcdaa09a',
   'Bulgarian Split Squat': 'd65feff4-9891-4ff8-a9f9-64965da7b69c',
   'Cable Kickback':    '1cce8f37-dd9f-442f-995e-be02b98a35ad',
   'Sumo Deadlift':     'f96d5f24-c9b0-4782-bbd9-41d383a6b633',
   'Romanian Deadlift': 'b7f3df3f-7371-4d29-bc59-3227fcdaa09a',
   'Step-ups':          '166bf038-1670-4c52-9f32-cf6463556d99',
   'Donkey Kicks':      'e0e8ce33-e39e-4e14-950b-2540be912c5b',
+  // LEGS
   'Squat':             'd65feff4-9891-4ff8-a9f9-64965da7b69c',
   'Leg Press':         '3dabdcc0-8639-4868-9e57-5afc621ed50d',
   'Leg Curl':          '34a512bf-baa1-48ac-a5b9-132073166018',
   'Calf Raise':        '94b73c60-81d0-4522-964e-ceacf89129cf',
   'Lunges':            '166bf038-1670-4c52-9f32-cf6463556d99',
-  'Hack Squat':        'd65feff4-9891-4ff8-a9f9-64965da7b69c',
+  'Hack Squat':        '3d0e78d0-1125-4d25-8bd4-9ca7ba3799e8',
   'Box Jump':          'd65feff4-9891-4ff8-a9f9-64965da7b69c',
-  'Wall Sit':          'd65feff4-9891-4ff8-a9f9-64965da7b69c',
-  'Treadmill Run':     'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Jump Rope':         'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Cycling':           'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
+  'Wall Sit':          '3dabdcc0-8639-4868-9e57-5afc621ed50d',
+  // CARDIO
+  'Treadmill Run':     '166bf038-1670-4c52-9f32-cf6463556d99',
+  'Jump Rope':         'c17e320f-7c96-4385-b8d7-f307ed4bae2e',
+  'Cycling':           '3dabdcc0-8639-4868-9e57-5afc621ed50d',
   'Rowing Machine':    '499ccaa4-719d-40bd-b441-511291482471',
-  'Burpees':           'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
-  'Box Jumps':         'd65feff4-9891-4ff8-a9f9-64965da7b69c',
-  'Stair Climber':     'd65feff4-9891-4ff8-a9f9-64965da7b69c',
-  'HIIT Sprint':       'be8f26b0-4948-4f48-b851-1a9d2cfd953c'
+  'Burpees':           'd65feff4-9891-4ff8-a9f9-64965da7b69c',
+  'Box Jumps':         'be8f26b0-4948-4f48-b851-1a9d2cfd953c',
+  'Stair Climber':     '3dabdcc0-8639-4868-9e57-5afc621ed50d',
+  'HIIT Sprint':       '166bf038-1670-4c52-9f32-cf6463556d99'
 };
 
 const muscles={
@@ -549,22 +557,91 @@ function renderDropped(){
 function removeDropped(n){dropped=dropped.filter(x=>x!==n);renderDropped();document.getElementById('comboResult').classList.remove('show');}
 function clearCombo(){dropped=[];renderDropped();document.getElementById('comboResult').classList.remove('show');}
 
+// ── CURATED 2-MUSCLE-GROUP COMBOS (hand-picked, 6 exercises each) ──
+const workoutCombinations = {
+  "Chest-Shoulders": ["Barbell Bench Press","Incline Dumbbell Press","Standing Overhead Press","Cable Chest Fly","Dumbbell Lateral Raise","Face Pull"],
+  "Chest-Back": ["Barbell Bench Press","Pull-Ups","Incline Dumbbell Press","Barbell Bent-Over Row","Cable Chest Fly","Seated Cable Row"],
+  "Chest-Arms": ["Barbell Bench Press","Incline Dumbbell Press","Weighted Dips","EZ Bar Curl","Rope Triceps Pushdown","Hammer Curl"],
+  "Chest-Core": ["Barbell Bench Press","Incline Dumbbell Press","Cable Chest Fly","Hanging Leg Raises","Cable Crunch","Ab Wheel Rollout"],
+  "Chest-Glutes": ["Barbell Bench Press","Incline Dumbbell Press","Barbell Hip Thrust","Romanian Deadlift","Cable Chest Fly","Glute Kickback"],
+  "Chest-Legs": ["Barbell Back Squat","Barbell Bench Press","Leg Press","Incline Dumbbell Press","Romanian Deadlift","Standing Calf Raise"],
+  "Chest-Cardio": ["Barbell Bench Press","Incline Dumbbell Press","Cable Chest Fly","15-Min Incline Treadmill Walk","Battle Ropes","Rowing Machine Sprint"],
+  "Shoulders-Back": ["Pull-Ups","Standing Overhead Press","Barbell Row","Lat Pulldown","Lateral Raise","Face Pull"],
+  "Shoulders-Arms": ["Standing Overhead Press","Lateral Raise","Rear Delt Fly","EZ Bar Curl","Skull Crushers","Hammer Curl"],
+  "Shoulders-Core": ["Standing Overhead Press","Dumbbell Lateral Raise","Face Pull","Cable Crunch","Hanging Leg Raise","Russian Twist"],
+  "Shoulders-Glutes": ["Standing Overhead Press","Barbell Hip Thrust","Lateral Raise","Romanian Deadlift","Rear Delt Fly","Cable Glute Kickback"],
+  "Shoulders-Legs": ["Barbell Back Squat","Standing Overhead Press","Romanian Deadlift","Dumbbell Lateral Raise","Leg Extension","Standing Calf Raise"],
+  "Shoulders-Cardio": ["Standing Overhead Press","Lateral Raise","Face Pull","Battle Ropes","Assault Bike","Jump Rope"],
+  "Back-Arms": ["Deadlift","Pull-Ups","Barbell Row","EZ Bar Curl","Hammer Curl","Close Grip Lat Pulldown"],
+  "Back-Core": ["Deadlift","Pull-Ups","Barbell Row","Hanging Leg Raise","Cable Crunch","Plank"],
+  "Back-Glutes": ["Deadlift","Romanian Deadlift","Pull-Ups","Hip Thrust","Barbell Row","Cable Kickback"],
+  "Back-Legs": ["Deadlift","Back Squat","Romanian Deadlift","Pull-Ups","Walking Lunges","Leg Curl"],
+  "Back-Cardio": ["Deadlift","Pull-Ups","Barbell Row","Rowing Machine","Battle Ropes","Incline Walk"],
+  "Arms-Core": ["EZ Bar Curl","Skull Crushers","Hammer Curl","Cable Crunch","Hanging Leg Raise","Plank"],
+  "Arms-Glutes": ["EZ Bar Curl","Skull Crushers","Barbell Hip Thrust","Romanian Deadlift","Hammer Curl","Cable Kickback"],
+  "Arms-Legs": ["Back Squat","Leg Press","Romanian Deadlift","EZ Bar Curl","Skull Crushers","Standing Calf Raise"],
+  "Arms-Cardio": ["EZ Bar Curl","Skull Crushers","Hammer Curl","Jump Rope","Battle Ropes","Rowing Machine"],
+  "Core-Glutes": ["Barbell Hip Thrust","Romanian Deadlift","Cable Kickback","Cable Crunch","Hanging Leg Raise","Ab Wheel Rollout"],
+  "Core-Legs": ["Back Squat","Romanian Deadlift","Walking Lunges","Cable Crunch","Plank","Hanging Leg Raise"],
+  "Core-Cardio": ["Cable Crunch","Hanging Leg Raise","Ab Wheel Rollout","Mountain Climbers","Rowing Machine","Incline Walk"],
+  "Glutes-Legs": ["Back Squat","Barbell Hip Thrust","Romanian Deadlift","Bulgarian Split Squat","Leg Press","Standing Calf Raise"],
+  "Glutes-Cardio": ["Barbell Hip Thrust","Romanian Deadlift","Cable Kickback","Stair Climber","Incline Treadmill Walk","Walking Lunges"],
+  "Legs-Cardio": ["Back Squat","Romanian Deadlift","Leg Press","Stair Climber","Cycling","Walking Lunges"]
+};
+
+// Find sets/tip/group metadata for a curated exercise name by fuzzy-matching
+// it against our existing per-muscle exercise database.
+function findExerciseMeta(name, fallbackGroup){
+  const norm = s => s.toLowerCase().replace(/[^a-z]/g,'');
+  const n = norm(name);
+  for(const g of muscleKeys){
+    for(const ex of muscles[g].exercises){
+      const en = norm(ex.name);
+      if(n.includes(en) || en.includes(n)){
+        return {name, sets:ex.sets, tip:ex.tip, group:g, videoKey:ex.name};
+      }
+    }
+  }
+  return {name, sets:'3×10–12', tip:'Maintain strict form and control through the full range of motion.', group:fallbackGroup, videoKey:null};
+}
+
 function generateCombo(){
   if(dropped.length<2){alert('Drop at least 2 muscle groups!');return;}
-  const PER=3;
-  let selected=[];
-  dropped.forEach(name=>{
-    muscles[name].exercises.slice(0,PER).forEach(ex=>selected.push({...ex,group:name}));
-  });
+
+  let exerciseNames=[];
+
+  if(dropped.length===2){
+    const a=dropped[0], b=dropped[1];
+    exerciseNames = workoutCombinations[`${a}-${b}`] || workoutCombinations[`${b}-${a}`];
+  }
+
+  if(!exerciseNames){
+    // 3 groups (or no curated pair found): blend curated pairs, capped at 6, no dupes
+    const seen=new Set();
+    exerciseNames=[];
+    for(let i=0;i<dropped.length && exerciseNames.length<6;i++){
+      for(let j=i+1;j<dropped.length && exerciseNames.length<6;j++){
+        const a=dropped[i], b=dropped[j];
+        const list=workoutCombinations[`${a}-${b}`] || workoutCombinations[`${b}-${a}`] || [];
+        for(const name of list){
+          if(exerciseNames.length>=6) break;
+          if(!seen.has(name)){ seen.add(name); exerciseNames.push(name); }
+        }
+      }
+    }
+  }
+
+  const selected = exerciseNames.map(name => findExerciseMeta(name, dropped[0]));
+
   const gC={Chest:'#ff6b35',Shoulders:'#ffe66d',Back:'#4ecdc4',Arms:'#a78bfa',Core:'#f472b6',Glutes:'#fb923c',Legs:'#34d399',Cardio:'#60a5fa'};
   const tips={2:"Superset: alternate between the two groups, 45s rest between rounds.",3:"Tri-set circuit: 1→2→3 no rest, then 90s. 3–4 rounds."};
   let html=`<div class="combo-result-header"><div><h3>${dropped.join(' + ')}</h3>
-    <p style="font-family:'Space Mono';font-size:10px;color:#444;margin-top:4px">${selected.length} EXERCISES · BEST 3 FROM EACH GROUP · DO IN ORDER</p></div>
+    <p style="font-family:'Space Mono';font-size:10px;color:#444;margin-top:4px">${selected.length} CURATED EXERCISES · DO IN ORDER</p></div>
     <span class="count">${selected.length}</span></div><div class="combo-exercises">`;
   selected.forEach((ex,i)=>{
     const col=gC[ex.group]||'#FF4D00';
     html+=`<div class="combo-ex-row"><span class="ex-num-big">0${i+1}</span>
-      <div class="ex-info"><h4>${ex.name}</h4><p>${ex.tip.substring(0,55)}...</p></div>
+      <div class="ex-info"><h4>${ex.name}</h4><p>${ex.tip.substring(0,55)}${ex.tip.length>55?'...':''}</p></div>
       <span class="ex-tag" style="border-color:${col};color:${col};margin-right:6px">${ex.sets}</span>
       <span class="ex-tag">${ex.group}</span></div>`;
   });
@@ -655,7 +732,7 @@ async function sendQuestion(){
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:500,
-        system:'You are an expert fitness coach for Your FitNess Gym. Answer gym, workout, nutrition and recovery questions in a motivating, concise way. Max 100 words. Use simple line breaks for lists.',
+        system:'You are an expert fitness coach for Lunatic Fitness gym. Answer gym, workout, nutrition and recovery questions in a motivating, concise way. Max 100 words. Use simple line breaks for lists.',
         messages:[{role:'user',content:q}]
       })
     });
